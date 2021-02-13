@@ -1,4 +1,3 @@
-import { Button, TextField } from '@adobe/react-spectrum';
 import { useState } from 'react';
 import { join } from '@/lib/rtcChat';
 
@@ -8,14 +7,17 @@ export default function Join() {
   return (
     <div>
       通話に参加する
-      <TextField
-        label="Channel Name"
+      <input
+        type="text"
+        placeholder="Channel Name"
         value={channelName}
-        onChange={setChannelName}
+        onChange={(evt) => {
+          setChannelName(evt.target.value);
+        }}
       />
-      <Button variant="primary" onPress={() => join(channelName)}>
+      <button type="button" onClick={() => join(channelName)}>
         このチャンネルに参加する
-      </Button>
+      </button>
     </div>
   );
 }
