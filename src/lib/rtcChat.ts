@@ -29,7 +29,6 @@ export async function join(channelName: string) {
 
   let uid;
   const token = await getToken(channelName);
-  console.info(`Your token is ${token}`);
   // join a channel and create local tracks, we can use Promise.all to run them concurrently
   [uid, localTracks.audioTrack] = await Promise.all([
     // join the channel
@@ -61,7 +60,7 @@ async function getToken(channelName: string) {
   return data.key;
 }
 
-async function leave() {
+export async function leave() {
   localTracks.audioTrack?.stop();
   localTracks.audioTrack?.close();
 
