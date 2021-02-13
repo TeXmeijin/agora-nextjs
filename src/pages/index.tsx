@@ -1,9 +1,12 @@
 import dynamic from 'next/dynamic';
 
-const Index = dynamic(() => import(`../components/pages/Index`), {
-  ssr: false,
-});
+const StartVoiceChat = dynamic(
+  () => import(`@/components/pages/StartVoiceChat`),
+  {
+    ssr: false,
+  },
+);
 
 export default function IndexPage() {
-  return <Index />;
+  return <StartVoiceChat />;
 }

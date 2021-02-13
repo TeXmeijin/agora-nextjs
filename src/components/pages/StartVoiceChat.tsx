@@ -1,6 +1,6 @@
 import { initRtcChat, join } from '@/lib/rtcChat';
 
-export default function Index() {
+export default function StartVoiceChat() {
   const onClickStartButton = async () => {
     await initRtcChat();
 

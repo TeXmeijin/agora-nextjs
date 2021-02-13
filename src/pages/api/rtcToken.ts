@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   // use 0 if uid is not specified
   const uid = req.query.uid || 0;
   if (!channelName) {
-    return res.status(400).json({ error: `channel name is required` }).send();
+    return res.status(400).json({ error: `channel name is required` });
   }
 
   const key = RtcTokenBuilder.buildTokenWithUid(
