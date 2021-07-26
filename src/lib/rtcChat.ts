@@ -85,7 +85,7 @@ async function subscribe(
   const { uid } = user;
   // subscribe to a remote user
   await client.subscribe(user, mediaType);
-  console.log(`subscribe success`);
+  console.log(`subscribe success. ${uid}`);
   // if (mediaType === `video`) {
   //   const playerElement = document.createElement(`div`);
   //   document.getElementById(`remote-player-list`).append(playerElement);
