@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import Auth from '@/components/pages/Login';
+import Auth from '@/components/pages/Auth';
 import Account from '@/components/pages/Account';
 import { Session } from '@supabase/supabase-js';
+import { useUser } from '@/components/context/AuthContext';
 
 // const StartVoiceChat = dynamic(
 //   () => import(`@/components/pages/StartVoiceChat`),
@@ -17,23 +18,14 @@ import { Session } from '@supabase/supabase-js';
 // }
 
 export default function Home() {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    setSession(supabase.auth.session());
-
-    // eslint-disable-next-line no-shadow
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-  }, []);
+  const { user, session } = useUser();
 
   return (
     <div className="container" style={{ padding: `50px 0 100px 0` }}>
-      {!session || !session.user ? (
+      {!user || !session ? (
         <Auth />
       ) : (
-        <Account key={session.user.id} session={session} />
+        <Account key={user.id} session={session} />
       )}
     </div>
   );
