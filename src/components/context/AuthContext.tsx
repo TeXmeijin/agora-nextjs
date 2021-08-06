@@ -1,51 +1,52 @@
-import React, { useEffect, useState, createContext, useContext } from 'react'
-import { SupabaseClient, Session, User } from '@supabase/supabase-js'
+// https://github.com/supabase/ui/blob/develop/src/components/Auth/UserContext.tsx
+import React, { useEffect, useState, createContext, useContext } from 'react';
+import { SupabaseClient, Session, User } from '@supabase/supabase-js';
 
 export interface AuthSession {
-  user: User | null
-  session: Session | null
+  user: User | null;
+  session: Session | null;
 }
 
-const UserContext = createContext<AuthSession>({ user: null, session: null })
+const UserContext = createContext<AuthSession>({ user: null, session: null });
 
 export interface Props {
-  supabaseClient: SupabaseClient
-  [propName: string]: any
+  supabaseClient: SupabaseClient;
+  [propName: string]: any;
 }
 
 export const UserContextProvider = (props: Props) => {
-  const { supabaseClient } = props
-  const [session, setSession] = useState<Session | null>(null)
-  const [user, setUser] = useState<User | null>(null)
+  const { supabaseClient } = props;
+  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const session = supabaseClient.auth.session()
-    setSession(session)
-    setUser(session?.user ?? null)
+    const getSession = supabaseClient.auth.session();
+    setSession(getSession);
+    setUser(getSession?.user ?? null);
     const { data: authListener } = supabaseClient.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session)
-        setUser(session?.user ?? null)
-      }
-    )
+      async (event, propSession) => {
+        setSession(propSession);
+        setUser(propSession?.user ?? null);
+      },
+    );
 
     return () => {
-      authListener?.unsubscribe()
-    }
+      authListener?.unsubscribe();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const value = {
     session,
     user,
-  }
-  return <UserContext.Provider value={value} {...props} />
-}
+  };
+  return <UserContext.Provider value={value} {...props} />;
+};
 
 export const useUser = () => {
-  const context = useContext(UserContext)
+  const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error(`useUser must be used within a UserContextProvider.`)
+    throw new Error(`useUser must be used within a UserContextProvider.`);
   }
-  return context
-}
+  return context;
+};
