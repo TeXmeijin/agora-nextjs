@@ -18,9 +18,9 @@ export default function Account({ session }: { session: Session }) {
       const user = supabase.auth.user()!;
 
       const { data, error, status } = await supabase
-        .from(`profiles`)
-        .select(`username, website, avatar_url`)
-        .eq(`id`, user.id)
+        .from('profiles')
+        .select('username, website, avatar_url')
+        .eq('id', user.id)
         .single();
 
       if (error && status !== 406) {
@@ -52,8 +52,8 @@ export default function Account({ session }: { session: Session }) {
         updated_at: new Date(),
       };
 
-      const { error } = await supabase.from(`profiles`).upsert(updates, {
-        returning: `minimal`, // Don't return the value after inserting
+      const { error } = await supabase.from('profiles').upsert(updates, {
+        returning: 'minimal', // Don't return the value after inserting
       });
 
       if (error) {
@@ -79,7 +79,7 @@ export default function Account({ session }: { session: Session }) {
           <input
             id="username"
             type="text"
-            value={username || ``}
+            value={username || ''}
             onChange={(e) => setUsername(e.target.value)}
           />
           Name
@@ -90,7 +90,7 @@ export default function Account({ session }: { session: Session }) {
           <input
             id="website"
             type="website"
-            value={website || ``}
+            value={website || ''}
             onChange={(e) => setWebsite(e.target.value)}
           />
           Website
@@ -104,7 +104,7 @@ export default function Account({ session }: { session: Session }) {
           onClick={() => updateProfile()}
           disabled={loading}
         >
-          {loading ? `Loading ...` : `Update`}
+          {loading ? 'Loading ...' : 'Update'}
         </button>
       </div>
 

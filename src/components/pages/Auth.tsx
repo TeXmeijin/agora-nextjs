@@ -1,16 +1,22 @@
 import { useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 
+async function signInWithTwitter() {
+  return supabase.auth.signIn({
+    provider: 'twitter',
+  });
+}
+
 export default function Auth() {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState(``);
+  const [email, setEmail] = useState('');
 
-  const handleLogin = async (emailParams: string) => {
+  const handleLogin = async () => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signIn({ email: emailParams });
+      const { error } = await signInWithTwitter();
       if (error) throw error;
-      alert(`Check your email for the login link!`);
+      alert('Check your email for the login link!');
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {
@@ -39,12 +45,12 @@ export default function Auth() {
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              handleLogin(email);
+              handleLogin();
             }}
             className="button block"
             disabled={loading}
           >
-            <span>{loading ? `Loading` : `Send magic link`}</span>
+            <span>{loading ? 'Loading' : 'Send magic link'}</span>
           </button>
         </div>
       </div>

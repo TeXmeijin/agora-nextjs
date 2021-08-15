@@ -3,7 +3,7 @@ import AgoraRTC, {
   IMicrophoneAudioTrack,
 } from 'agora-rtc-sdk-ng';
 
-const client = AgoraRTC.createClient({ mode: `rtc`, codec: `vp8` });
+const client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
 
 const localTracks: {
   audioTrack: IMicrophoneAudioTrack | null;
@@ -13,7 +13,7 @@ const localTracks: {
 let remoteUsers: {
   [k in string | number]?: IAgoraRTCRemoteUser;
 } = {};
-let agoraAppId = ``;
+let agoraAppId = '';
 
 export async function initRtcChat() {
   agoraAppId = (await getAppId()) as string;
@@ -21,11 +21,11 @@ export async function initRtcChat() {
 
 export async function join(channelName: string) {
   if (!channelName) {
-    throw new Error(`channel name is required.`);
+    throw new Error('channel name is required.');
   }
   // add event listener to play remote tracks when remote user publishes.
-  client.on(`user-published`, handleUserPublished);
-  client.on(`user-unpublished`, handleUserUnpublished);
+  client.on('user-published', handleUserPublished);
+  client.on('user-unpublished', handleUserUnpublished);
 
   let uid;
   const token = await getToken(channelName);
@@ -44,7 +44,7 @@ export async function join(channelName: string) {
 
   // publish local tracks to channel
   await client.publish([localTracks.audioTrack]);
-  console.log(`publish success`);
+  console.log('publish success');
   return uid;
 }
 
@@ -75,7 +75,7 @@ export async function leave() {
   // document.getElementById(`join`).removeAttribute(`disabled`);
   // document.getElementById(`leave`).setAttribute(`disabled`, ``);
   // document.getElementById(`success-alert`).classList.remove(`show`);
-  console.log(`client leaves channel success`);
+  console.log('client leaves channel success');
 }
 
 async function subscribe(
@@ -97,7 +97,7 @@ async function subscribe(
   //   `;
   //   user.videoTrack.play(`player-${uid}`);
   // }
-  if (mediaType === `audio`) {
+  if (mediaType === 'audio') {
     user.audioTrack?.play();
   }
 }

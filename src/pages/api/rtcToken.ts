@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const { RtcTokenBuilder, RtcRole } = require(`agora-access-token`);
+const { RtcTokenBuilder, RtcRole } = require('agora-access-token');
 
 // Fill the appID and appCertificate key given by Agora.io
 const appID = process.env.APP_ID;
@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   // use 0 if uid is not specified
   const uid = req.query.uid || 0;
   if (!channelName) {
-    return res.status(400).json({ error: `channel name is required` });
+    return res.status(400).json({ error: 'channel name is required' });
   }
 
   const key = RtcTokenBuilder.buildTokenWithUid(

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { join, leave } from '@/lib/rtcChat';
 
 export default function Join() {
-  const [channelName, setChannelName] = useState(``);
+  const [channelName, setChannelName] = useState('');
 
   return (
     <div>

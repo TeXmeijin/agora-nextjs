@@ -98,17 +98,17 @@ export default function useVideoChat(client: IAgoraRTCClient | undefined): {
     const handleUserLeft = () => {
       setRemoteUsers(() => Array.from(client.remoteUsers));
     };
-    client.on(`user-published`, handleUserPublished);
-    client.on(`user-unpublished`, handleUserUnpublished);
-    client.on(`user-joined`, handleUserJoined);
-    client.on(`user-left`, handleUserLeft);
+    client.on('user-published', handleUserPublished);
+    client.on('user-unpublished', handleUserUnpublished);
+    client.on('user-joined', handleUserJoined);
+    client.on('user-left', handleUserLeft);
 
     // eslint-disable-next-line consistent-return
     return () => {
-      client.off(`user-published`, handleUserPublished);
-      client.off(`user-unpublished`, handleUserUnpublished);
-      client.off(`user-joined`, handleUserJoined);
-      client.off(`user-left`, handleUserLeft);
+      client.off('user-published', handleUserPublished);
+      client.off('user-unpublished', handleUserUnpublished);
+      client.off('user-joined', handleUserJoined);
+      client.off('user-left', handleUserLeft);
     };
   }, [client]);
 
