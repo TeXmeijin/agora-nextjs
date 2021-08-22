@@ -1,11 +1,10 @@
-import AuthMenu from '@/components/parts/AuthMenu';
+import AuthMenu from '@/components/uiGroup/AuthMenu';
 import { useUser } from '@/components/context/AuthContext';
 import { serviceInfo } from '@/packages/service/serviceInfo';
 import { Flex, Heading } from '@chakra-ui/react';
+import { LoginModal } from '@/components/uiGroup/LoginModal';
 
-type Props = {};
-
-export const Header = (props: Props) => {
+export const Header = () => {
   const { session } = useUser();
   return (
     <Flex
@@ -19,6 +18,7 @@ export const Header = (props: Props) => {
         {serviceInfo.name}
       </Heading>
       {!!session && <AuthMenu session={session}></AuthMenu>}
+      {!session && <LoginModal></LoginModal>}
     </Flex>
   );
 };

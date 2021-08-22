@@ -29,7 +29,7 @@ export default function AuthMenu({ session }: { session: Session }) {
           className="button block"
           onClick={() => supabase.auth.signOut()}
         >
-          Sign Out
+          Log Out
         </Button>
       </div>
     </div>

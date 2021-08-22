@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
-import Auth from '@/components/pages/Auth';
-import AuthMenu from '@/components/parts/AuthMenu';
+import LoginButton from '@/components/uiGroup/LoginButton';
+import AuthMenu from '@/components/uiGroup/AuthMenu';
 import { Session } from '@supabase/supabase-js';
 import { useUser } from '@/components/context/AuthContext';
 import Layout from '@/components/layouts/Layout';
