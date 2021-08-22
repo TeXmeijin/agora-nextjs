@@ -1,6 +1,6 @@
 import { Header } from '@/components/layouts/Header';
 import { ReactNode } from 'react';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { Box, ChakraProvider, extendTheme, Flex } from '@chakra-ui/react';
 
 type Props = {
   children: ReactNode;
@@ -8,20 +8,20 @@ type Props = {
 
 const theme = extendTheme({
   colors: {
-    brand: {
-      100: '#d51',
-    },
-    brandBackground: {
-      100: '#dd2',
-    },
+    brand: '#d51',
+    brandBackground: '#dd2',
   },
 });
 
 export default function Layout({ children }: Props) {
   return (
     <ChakraProvider theme={theme}>
-      <Header />
-      <main>{children}</main>
+      <Flex as={'main'} flexDir={'column'} height={'100vh'}>
+        <Header />
+        <Box flexGrow={1} bg={'#fdfde5'}>
+          {children}
+        </Box>
+      </Flex>
     </ChakraProvider>
   );
 }

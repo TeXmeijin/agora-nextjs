@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { signInWithTwitter } from '@/packages/auth/usecase/signInWithTwitter';
 import { Button } from '@chakra-ui/react';
+import { FaTwitter } from 'react-icons/fa';
 
 export default function LoginButton() {
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
 
   const handleLogin = async () => {
     try {
@@ -26,9 +26,9 @@ export default function LoginButton() {
       }}
       disabled={loading}
       isLoading={loading}
-      bg={'#1da1f2'}
       isFullWidth
-      color={'white'}
+      colorScheme="twitter"
+      leftIcon={<FaTwitter />}
     >
       <span>Login By Twitter</span>
     </Button>

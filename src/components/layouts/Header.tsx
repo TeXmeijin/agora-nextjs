@@ -8,11 +8,11 @@ export const Header = () => {
   const { session } = useUser();
   return (
     <Flex
-      background={'brandBackground.100'}
+      background={'brandBackground'}
       justifyContent={'space-between'}
       alignItems={'center'}
       height={'60px'}
-      padding={'8px 16px'}
+      padding={'8px'}
     >
       <Heading as={'h1'} size={'lg'}>
         {serviceInfo.name}

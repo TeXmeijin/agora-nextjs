@@ -2,7 +2,8 @@ import { supabase } from '@/lib/supabaseClient';
 import { Session } from '@supabase/supabase-js';
 import { useEffect } from 'react';
 import { upsertProfile } from '@/packages/auth/usecase/upsertProfile';
-import { Button } from '@chakra-ui/react';
+import { Button, Flex, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 
 export default function AuthMenu({ session }: { session: Session }) {
   useEffect(() => {
@@ -22,16 +23,20 @@ export default function AuthMenu({ session }: { session: Session }) {
   }, []);
 
   return (
-    <div className="form-widget">
-      <div>
-        <Button
-          type="button"
-          className="button block"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Log Out
+    <Flex>
+      <Link as={NextLink} href={'/rooms/start'}>
+        <Button color={'white'} background={'brand'} size={'sm'}>
+          部屋を作成する
         </Button>
-      </div>
-    </div>
+      </Link>
+      <Button
+        ml={2}
+        onClick={() => supabase.auth.signOut()}
+        colorScheme={'gray'}
+        size={'sm'}
+      >
+        ログアウト
+      </Button>
+    </Flex>
   );
 }

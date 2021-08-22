@@ -15,10 +15,10 @@ export const LoginModal = () => {
 
   return (
     <>
-      <Button onClick={onOpen}>Log In</Button>
+      <Button onClick={onOpen}>ログイン</Button>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay></ModalOverlay>
-        <ModalContent>
+        <ModalContent maxW={'95%'} width={'450px'}>
           <Box p={'24px'}>
             <Heading size={'md'}>{serviceInfo.name}にログイン</Heading>
             <Text mt={2}>
