@@ -1,4 +1,4 @@
 export const serviceInfo = {
-  name: 'Awesome Service',
+  name: 'Service',
   description: 'Description',
 };

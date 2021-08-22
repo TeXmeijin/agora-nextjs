@@ -26,7 +26,7 @@ export default function LoginButton() {
       }}
       disabled={loading}
       isLoading={loading}
-      bg={'blue'}
+      bg={'#1da1f2'}
       isFullWidth
       color={'white'}
     >
