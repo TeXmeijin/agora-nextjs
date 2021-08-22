@@ -1,11 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-
-async function signInWithTwitter() {
-  return supabase.auth.signIn({
-    provider: 'twitter',
-  });
-}
+import { signInWithTwitter } from '@/packages/auth/usecase/signInWithTwitter';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
@@ -14,9 +8,8 @@ export default function Auth() {
   const handleLogin = async () => {
     try {
       setLoading(true);
-      const { error } = await signInWithTwitter();
+      const { error, user } = await signInWithTwitter();
       if (error) throw error;
-      alert('Check your email for the login link!');
     } catch (error) {
       alert(error.error_description || error.message);
     } finally {

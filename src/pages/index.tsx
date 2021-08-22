@@ -2,9 +2,12 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import Auth from '@/components/pages/Auth';
-import Account from '@/components/pages/Account';
+import AuthMenu from '@/components/parts/AuthMenu';
 import { Session } from '@supabase/supabase-js';
 import { useUser } from '@/components/context/AuthContext';
+import Layout from '@/components/layouts/Layout';
+import { Head } from '@/components/meta/Head';
+import { serviceInfo } from '@/packages/service/serviceInfo';
 
 // const StartVoiceChat = dynamic(
 //   () => import(`@/components/pages/StartVoiceChat`),
@@ -18,15 +21,13 @@ import { useUser } from '@/components/context/AuthContext';
 // }
 
 export default function Home() {
-  const { user, session } = useUser();
-
   return (
-    <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      {!user || !session ? (
-        <Auth />
-      ) : (
-        <Account key={user.id} session={session} />
-      )}
-    </div>
+    <Layout>
+      <Head
+        title={serviceInfo.name}
+        description={serviceInfo.description}
+      ></Head>
+      <div>{serviceInfo.description}</div>
+    </Layout>
   );
 }
