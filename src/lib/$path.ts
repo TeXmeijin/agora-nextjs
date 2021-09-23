@@ -5,6 +5,9 @@ export const pagesPath = {
     $url: (url?: { hash?: string }) => ({ pathname: '/join' as const, hash: url?.hash })
   },
   rooms: {
+    _id: (id: string | number) => ({
+      $url: (url?: { hash?: string }) => ({ pathname: '/rooms/[id]' as const, query: { id }, hash: url?.hash })
+    }),
     start: {
       $url: (url?: { hash?: string }) => ({ pathname: '/rooms/start' as const, hash: url?.hash })
     },

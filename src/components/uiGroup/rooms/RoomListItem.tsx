@@ -2,6 +2,7 @@ import { Box, BoxProps, Flex, Text } from '@chakra-ui/react';
 import type { RoomListItem as RoomListItemType } from '@/types/room/type';
 import { motion } from 'framer-motion';
 import { RoomStartDate } from '@/components/domain/room/RoomStartDate';
+import { pagesPath } from '@/lib/$path';
 
 export const MotionBox = motion<BoxProps>(Box);
 
@@ -10,6 +11,10 @@ type Props = {
 };
 
 export const RoomListItem = ({ room }: Props) => {
+  const onClick = () => {
+    location.replace(`/rooms/${room.id}`);
+  };
+
   return (
     <MotionBox
       bg="white"
@@ -20,6 +25,7 @@ export const RoomListItem = ({ room }: Props) => {
       borderRadius={8}
       boxShadow={'lg'}
       cursor={'pointer'}
+      onClick={onClick}
     >
       <Flex justifyContent={'space-between'}>
         <Box>
