@@ -1,4 +1,4 @@
 export const serviceInfo = {
-  name: 'Service',
-  description: 'Description',
+  name: process.env.NEXT_PUBLIC_SERVICE_NAME,
+  description: process.env.NEXT_PUBLIC_SERVICE_DESCRIPTION,
 };

@@ -5,8 +5,10 @@
   "author": "TeXmeijin",
   "license": "MIT",
   "scripts": {
-    "dev": "next --port 33333",
-    "build": "next build",
+    "dev": "run-p dev:*",
+    "dev:next": "next dev --port 33333",
+    "dev:path": "pathpida --ignorePath .gitignore --watch",
+    "build": "pathpida --ignorePath .gitignore && next build",
     "start": "next start",
     "type-check": "tsc",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
@@ -19,15 +21,18 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@supabase/supabase-js": "^1.20.0",
     "agora-access-token": "^2.0.4",
     "agora-rtc-sdk-ng": "^4.6.1",
+    "dayjs": "^1.10.7",
+    "faker": "^5.5.3",
     "framer-motion": "^4.1.17",
     "next": "^11.0.1",
-    "pathpida": "^0.15.2",
+    "pathpida": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -36,6 +41,7 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/faker": "^5.5.8",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
@@ -45,6 +51,7 @@
     "eslint-config-next": "^11.1.0",
     "eslint-config-prettier": "^7.2.0",
     "lint-staged": "^11.0.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
     "simple-git-hooks": "^2.5.1",
     "typescript": "^4.3.5"

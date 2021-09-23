@@ -1,13 +1,8 @@
-import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import LoginButton from '@/components/uiGroup/LoginButton';
-import AuthMenu from '@/components/uiGroup/AuthMenu';
-import { Session } from '@supabase/supabase-js';
-import { useUser } from '@/components/context/AuthContext';
 import Layout from '@/components/layouts/Layout';
 import { Head } from '@/components/meta/Head';
 import { serviceInfo } from '@/packages/service/serviceInfo';
+import { Container, Link } from '@chakra-ui/react';
+import { pagesPath } from '@/lib/$path';
 
 // const StartVoiceChat = dynamic(
 //   () => import(`@/components/pages/StartVoiceChat`),
@@ -23,11 +18,10 @@ import { serviceInfo } from '@/packages/service/serviceInfo';
 export default function Home() {
   return (
     <Layout>
-      <Head
-        title={serviceInfo.name}
-        description={serviceInfo.description}
-      ></Head>
-      <div>{serviceInfo.description}</div>
+      <Head title={'トップページ'} description={serviceInfo.description} />
+      <Container>
+        <Link href={pagesPath.rooms.$url().pathname}>部屋一覧へ</Link>
+      </Container>
     </Layout>
   );
 }

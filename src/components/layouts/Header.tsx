@@ -1,8 +1,9 @@
 import AuthMenu from '@/components/uiGroup/AuthMenu';
 import { useUser } from '@/components/context/AuthContext';
 import { serviceInfo } from '@/packages/service/serviceInfo';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Link } from '@chakra-ui/react';
 import { LoginModal } from '@/components/uiGroup/LoginModal';
+import NextLink from 'next/link';
 
 export const Header = () => {
   const { session } = useUser();
@@ -11,11 +12,12 @@ export const Header = () => {
       background={'brandBackground'}
       justifyContent={'space-between'}
       alignItems={'center'}
-      height={'60px'}
-      padding={'8px'}
+      p={4}
     >
       <Heading as={'h1'} size={'lg'}>
-        {serviceInfo.name}
+        <Link as={NextLink} href={'/'}>
+          {serviceInfo.name}
+        </Link>
       </Heading>
       {!!session && <AuthMenu session={session}></AuthMenu>}
       {!session && <LoginModal></LoginModal>}
