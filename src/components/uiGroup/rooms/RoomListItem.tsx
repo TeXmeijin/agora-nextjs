@@ -1,12 +1,12 @@
 import { Box, BoxProps, Flex, Text } from '@chakra-ui/react';
-import { Room } from '@/types/room/type';
+import type { RoomListItem as RoomListItemType } from '@/types/room/type';
 import { motion } from 'framer-motion';
-import { DateText } from '@/components/uiParts/DateText';
-import { CalendarIcon } from '@chakra-ui/icons';
+import { RoomStartDate } from '@/components/domain/room/RoomStartDate';
+
 export const MotionBox = motion<BoxProps>(Box);
 
 type Props = {
-  room: Room;
+  room: RoomListItemType;
 };
 
 export const RoomListItem = ({ room }: Props) => {
@@ -23,16 +23,7 @@ export const RoomListItem = ({ room }: Props) => {
     >
       <Flex justifyContent={'space-between'}>
         <Box>
-          <Flex alignItems={'center'}>
-            <CalendarIcon color={'brand'} />
-            <DateText
-              ml={2}
-              fontWeight={'bold'}
-              color={'brand'}
-              fontSize={'sm'}
-              date={room.startDate}
-            />
-          </Flex>
+          <RoomStartDate startDate={room.startDate} />
           <Text mt={3} fontWeight={'bold'} fontSize={'xl'}>
             {room.title}
           </Text>
@@ -41,7 +32,7 @@ export const RoomListItem = ({ room }: Props) => {
           </Text>
         </Box>
         <Box>
-          <div dangerouslySetInnerHTML={{ __html: room.storyImageTag }}></div>
+          <div dangerouslySetInnerHTML={{ __html: room.storyImageTag }} />
         </Box>
       </Flex>
     </MotionBox>

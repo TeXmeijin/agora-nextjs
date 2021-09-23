@@ -15,9 +15,9 @@ const Index = () => {
   return (
     <Layout>
       <Container maxW={'md'}>
-        <Box pa={8}>
+        <Box p={8}>
           {rooms.map((room) => (
-            <Box key={room.id} mt={4}>
+            <Box key={room.id} mb={4}>
               <RoomListItem room={room}></RoomListItem>
             </Box>
           ))}

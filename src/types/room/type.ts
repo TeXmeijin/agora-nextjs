@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-export type Room = {
+export type RoomListItem = {
   id: string;
   title: string;
   storyTitle: string;
@@ -12,7 +12,7 @@ export type Room = {
 
 export type Factory<T> = (arg?: Partial<T>) => T;
 
-export const roomFactory: Factory<Room> = () => {
+export const roomFactory: Factory<RoomListItem> = () => {
   faker.locale = 'ja';
   return {
     id: faker.random.word(),
