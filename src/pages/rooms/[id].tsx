@@ -1,14 +1,18 @@
 import Layout from '@/components/layouts/Layout';
-import { Container } from '@chakra-ui/react';
+import { RoomDetail } from '@/components/uiGroup/rooms/RoomDetail';
+import { useRouter } from 'next/router';
+import { Head } from '@/components/meta/Head';
 
 type Props = {};
 
-const RoomDetail = (props: Props) => {
+const RoomDetailPage = (props: Props) => {
+  const router = useRouter();
+
   return (
     <Layout>
-      <Container>hoge</Container>
+      <RoomDetail roomId={`${router.query.id}`}></RoomDetail>
     </Layout>
   );
 };
 
-export default RoomDetail;
+export default RoomDetailPage;

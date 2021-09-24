@@ -26,7 +26,7 @@ export default function AuthMenu({ session }: { session: Session }) {
     <Flex>
       <Link as={NextLink} href={'/rooms/start'}>
         <Button color={'white'} background={'brand'} size={'sm'}>
-          部屋を作成する
+          部屋を作る
         </Button>
       </Link>
       <Button
@@ -35,7 +35,7 @@ export default function AuthMenu({ session }: { session: Session }) {
         colorScheme={'gray'}
         size={'sm'}
       >
-        ログアウト
+        Sign Out
       </Button>
     </Flex>
   );

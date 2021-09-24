@@ -1,22 +1,16 @@
 import { DateText } from '@/components/uiParts/DateText';
 import { CalendarIcon } from '@chakra-ui/icons';
-import { Flex } from '@chakra-ui/react';
+import { Flex, FlexProps } from '@chakra-ui/react';
 
 type Props = {
   startDate: Date;
-};
+} & FlexProps;
 
-export const RoomStartDate = (props: Props) => {
+export const RoomStartDate = ({ startDate, ...props }: Props) => {
   return (
-    <Flex alignItems={'center'}>
+    <Flex alignItems={'center'} {...props}>
       <CalendarIcon color={'brand'} />
-      <DateText
-        ml={2}
-        fontWeight={'bold'}
-        color={'brand'}
-        fontSize={'sm'}
-        date={props.startDate}
-      />
+      <DateText ml={2} fontWeight={'bold'} color={'brand'} date={startDate} />
     </Flex>
   );
 };

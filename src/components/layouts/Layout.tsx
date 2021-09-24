@@ -6,11 +6,14 @@ type Props = {
   children: ReactNode;
 };
 
+export const ThemeColors = {
+  brand: '#d51',
+  brandBackground: '#dd2',
+  baseBackground: '#fdfde5',
+} as const;
+
 const theme = extendTheme({
-  colors: {
-    brand: '#d51',
-    brandBackground: '#dd2',
-  },
+  colors: ThemeColors,
 });
 
 export default function Layout({ children }: Props) {
@@ -18,7 +21,7 @@ export default function Layout({ children }: Props) {
     <ChakraProvider theme={theme}>
       <Flex as={'main'} flexDir={'column'} height={'100vh'}>
         <Header />
-        <Box flexGrow={1} bg={'#fdfde5'}>
+        <Box flexGrow={1} bg={'baseBackground'}>
           {children}
         </Box>
       </Flex>

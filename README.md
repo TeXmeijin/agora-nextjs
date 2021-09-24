@@ -1,5 +1,10 @@
 # Real-time communication app using Next.js / Agora / Supabase
 
+## 前提
+
+- 漫画やアニメ、映画のネタバレについて話し合えるビデオ通話ツールを開発する
+- それ前提の実装や文言が多く含まれています
+
 ## 目標
 
 Next.js、Agora、Supabaseを使って、リアルタイム音声通話ができるサービスを開発する。
