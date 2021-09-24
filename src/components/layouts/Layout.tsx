@@ -14,16 +14,26 @@ export const ThemeColors = {
 
 const theme = extendTheme({
   colors: ThemeColors,
+  fonts: {
+    body: 'Libre Baskerville, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;',
+  },
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
 });
 
 export default function Layout({ children }: Props) {
   return (
     <ChakraProvider theme={theme}>
-      <Flex as={'main'} flexDir={'column'} height={'100vh'}>
+      <Flex
+        as={'main'}
+        flexDir={'column'}
+        minH={'100vh'}
+        bgColor={'gray.800'}
+        width={'100%'}
+        display={'flex'}
+      >
         <Header />
-        <Box flexGrow={1} bg={'baseBackground'}>
-          {children}
-        </Box>
+        <Box flexGrow={1}>{children}</Box>
       </Flex>
     </ChakraProvider>
   );

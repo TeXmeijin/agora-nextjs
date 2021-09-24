@@ -37,28 +37,12 @@ export const RoomDetail = (props: Props) => {
   const room = roomFactory();
   return (
     <>
-      <Head title={room.title}>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <Box
-        fontFamily={'Libre Baskerville'}
-        bgColor={'gray.800'}
-        py={6}
-        px={2}
-        width={'100%'}
-        height={'100%'}
-        display={'flex'}
-        flexDir={'column'}
-      >
+      <Head title={room.title}></Head>
+      <Box py={6} px={2}>
         <Container p={0}>
           <Flex alignItems={'center'} justifyContent={'space-between'}>
             <NextLink href={'/rooms'}>
-              <Box p={2}>
+              <Box p={2} cursor={'pointer'}>
                 <ChevronLeftIcon color={'gray.400'}></ChevronLeftIcon>
               </Box>
             </NextLink>
