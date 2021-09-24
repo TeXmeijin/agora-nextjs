@@ -2,6 +2,8 @@ import { RoomListItem } from '@/types/room/type';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { ThemeColors } from '@/components/layouts/Layout';
 import { useMemo } from 'react';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ja';
 
 type Props = {
   room: RoomListItem;
@@ -14,6 +16,10 @@ function dayOfWeekAsString(dayIndex: number) {
 export const RoomJoinTicket = ({ room }: Props) => {
   const dayOfWeek = useMemo(() => {
     return dayOfWeekAsString(room.startDate.getDay());
+  }, [room]);
+
+  const time = useMemo(() => {
+    return dayjs(room.startDate).format('hh:mm');
   }, [room]);
 
   return (
@@ -54,6 +60,7 @@ export const RoomJoinTicket = ({ room }: Props) => {
               border={`1px solid ${ThemeColors.brandBackground}`}
               px={4}
               py={1}
+              flexDir={'column'}
             >
               <Flex alignItems={'center'}>
                 <Text fontSize={'3xl'}>{room.startDate.getMonth() + 1}</Text>
@@ -65,6 +72,9 @@ export const RoomJoinTicket = ({ room }: Props) => {
                 <Text ml={2} mt={2}>
                   {room.startDate.getFullYear()}
                 </Text>
+              </Flex>
+              <Flex justifyContent={'center'}>
+                <Text fontSize={'xl'}>{time}</Text>
               </Flex>
             </Flex>
             <Flex justifyContent={'center'} mt={3}>
