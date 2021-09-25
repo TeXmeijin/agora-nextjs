@@ -12,6 +12,7 @@ export const Header = () => {
       background={'brandBackground'}
       justifyContent={'space-between'}
       alignItems={'center'}
+      color={'gray.900'}
       p={4}
     >
       <Heading as={'h1'} size={'lg'}>

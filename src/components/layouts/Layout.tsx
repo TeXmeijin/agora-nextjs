@@ -31,6 +31,7 @@ export default function Layout({ children }: Props) {
         bgColor={'gray.800'}
         width={'100%'}
         display={'flex'}
+        color={'gray.100'}
       >
         <Header />
         <Box flexGrow={1}>{children}</Box>
