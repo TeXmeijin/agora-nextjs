@@ -4,7 +4,7 @@ export default function StartVoiceChat() {
   const onClickStartButton = async () => {
     await initRtcChat();
 
-    const channelName = `channelName`;
+    const channelName = 'channelName';
 
     await join(channelName);
   };

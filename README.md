@@ -1,58 +1,43 @@
-<p align="center">
-  <img src="https://www.joaopedro.cc/img/github/typescript-nextjs-starter.png" alt="Next.js and TypeScript">
-</p>
+# Real-time communication app using Next.js / Agora / Supabase
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&style=for-the-badge&color=24B36B&labelColor=000000" alt="PRs welcome!" />
+## 目標
 
-  <img alt="License" src="https://img.shields.io/github/license/jpedroschmitz/typescript-nextjs-starter?style=for-the-badge&color=24B36B&labelColor=000000">
+Next.js、Agora、Supabaseを使って、リアルタイム音声通話ができるサービスを開発する。
 
-  <a href="https://twitter.com/intent/follow?screen_name=jpedroschmitz">
-    <img src="https://img.shields.io/twitter/follow/jpedroschmitz?style=for-the-badge&color=24B36B&labelColor=000000" alt="Follow @jpedroschmitz" />
-  </a>
-</p>
+## 開発する機能
 
-<br>
+- ユーザーがアカウントを登録できる
+- ユーザーがログインできる
+- ユーザーがサービス上でログインステータスを確認できる
+- ユーザーが通話を開始できる
+- ユーザーが現在実行されている通話を一覧で確認できる
+- ユーザーが部屋に入室できる
+- ユーザーが部屋から離脱できる
+- 通話を開始したユーザーは、入室しているユーザーを一覧で確認できる
 
-A TypeScript starter for Next.js that includes all you need to build amazing projects 🔥
+### ページ
 
-- 📏 **ESLint** — Pluggable JavaScript linter
-- 💖 **Prettier** - Opinionated Code Formatter
-- 🐶 **Husky** — Use git hooks with ease
-- 📄 **Commitizen** - Conventional commit messages CLI
-- 🚓 **Commitlint** - Lint commit messages
-- 🖌 **Renovate** - Dependency update tool
-- 🚫 **lint-staged** - Run linters against staged git files
-- 🗂 **Absolute import** - Import folders and files using the `@` prefix
+- トップページ（任意のLP）
+- /rooms 部屋一覧
+- /rooms/{roomId} 部屋に参加するボタンがある。リロードすると一時的に不参加になる。離脱もできる。参加中の人数やアイコンなどが見える
+- /rooms/start 部屋を開始する。部屋の名前と説明と開始日付を入力してSubmitする。
+- /users/{id} ユーザー自身のみアクセスできて、プロフィールの編集ができる
 
-## 🚀 Getting started
+### データストア
 
-The best way to start with this template is using `create-next-app`.
+- users
+- rooms
+  - id
+  - name
+  - description
+  - start_at
+  - created_at
+  - updated_at
 
-```
-npx create-next-app ts-next -e https://github.com/jpedroschmitz/typescript-nextjs-starter
-```
+### コンポーネント
 
-If you prefer you can clone this repository and run the following commands inside the project folder:
+- ヘッダー：ログインしているユーザーのアイコンが見れる
 
-1. `npm install` or `yarn`;
-2. `yarn dev`;
+### 備考
 
-To view the project open `http://localhost:3000`.
-
-## 🤝 Contributing
-
-1. Fork this repository;
-2. Create your branch: `git checkout -b my-new-feature`;
-3. Commit your changes: `git commit -m 'Add some feature'`;
-4. Push to the branch: `git push origin my-new-feature`.
-
-**After your pull request is merged**, you can safely delete your branch.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more information.
-
----
-
-Made with ♥ by João Pedro Schmitz
+- Twitterログインに対応する（アイコンを設定させるフローが手間なので）

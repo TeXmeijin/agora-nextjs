@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const Join = dynamic(() => import(`../../components/pages/Join`), {
+const Join = dynamic(() => import('../../components/pages/Join'), {
   ssr: false,
 });
 
